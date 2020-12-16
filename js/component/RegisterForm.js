@@ -1,3 +1,5 @@
+import InputWrapper from "./InputWrapper.js";
+import {validateEmail} from "../utils.js"
 
 const $template = document.createElement('template')
 $template.innerHTML = /*html*/
@@ -54,30 +56,78 @@ export default class RegistrationForm extends HTMLElement {
     }
 
     connectedCallback(){
-        this.$form.onsubmit = (event) => {
+        this.$form.onsubmit = async (event) => {
             event.preventDefault();
-            console.log(this.$email.value());
-            window.localStorage.setItem("email",this.$email.value())
-            window.localStorage.setItem("name",this.$name.value())
+            let email = this.$email.value();
+            let name = this.$name.value();
+            let password = this.$password.value();
+            let $passwordConfirmation = this.$passwordConfirmation.value();
 
-            if(this.$password.value() == this.$passwordConfirmation.value()){
-                
-                 window.localStorage.setItem("password",this.$password.value())
-                      this.$message.innerHTML = '';
-                      }
-                     else {
-                        this.$message.style.color = 'red';
-                        this.$message.innerHTML = 'Did Not Match. Please Try Again!';
-                    }
-                    console.log(window.localStorage.getItem("password"));
+            let isPassed =
 
-                  }
+           ( InputWrapper.validate(this.$email, (value) => value != '' , "Type Your Email")
+&&          InputWrapper.validate(this.$email, (value) => validateEmail(value)  , "Email is wrong") ) &&
+
+
+
+           ( InputWrapper.validate(this.$name, (value) => value != '' , "Type Your Name")) &&
+           ( InputWrapper.validate(this.$password, (value) => value != '' , "Type Your Password") ) &&
+           ( InputWrapper.validate(this.$passwordConfirmation, (value) => value != '' , "Type Your Password Again")
+&&           InputWrapper.validate(this.$passwordConfirmation, (value) => value == password , "Password confirmation is incorrect"))
+
             
+            if(isPassed){
+                let result = await firebase.firestore().collection('users').where('email', '==', email).get();
+                console.log(result);
+
+                if(result.empty) {
+                    firebase.firestore().collection('users').add({
+                        name: name,
+                        email: email,
+                        password: password
+
+                    });
+                }
+                else {
+                    alert("This email has been used by others")
+                }
             }
             
 
-        }
+            
 
+
+
+            // if (email == ''){
+            //     this.$email.error('Type Your Email')
+            // }
+            // else {
+            //     this.$email.error('')
+            // }
+
+
+            // window.localStorage.setItem("email",this.$email.value())
+            // window.localStorage.setItem("name",this.$name.value())
+
+            // if(this.$password.value() == this.$passwordConfirmation.value()){
+                
+            //      window.localStorage.setItem("password",this.$password.value())
+            //           this.$message.innerHTML = '';
+            //           }
+            //          else {
+            //             this.$message.style.color = 'red';
+            //             this.$message.innerHTML = 'Did Not Match. Please Try Again!';
+            //         }
+            //         console.log(window.localStorage.getItem("password"));
+
+            
+            
+        }
+    }
+            
+
+        
+}
     
 
     
