@@ -27,6 +27,10 @@ export default class InputWrapper extends HTMLElement {
         return ['label', 'type', 'error', 'value']
     }
 
+
+    
+
+
     attributeChangedCallback (attrName, oldValue, newValue) {
         switch (attrName){
             case 'label':
