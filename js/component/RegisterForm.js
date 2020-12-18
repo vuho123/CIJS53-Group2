@@ -9,7 +9,7 @@ $template.innerHTML = /*html*/
 <link rel="stylesheet" href="./css/register-form.css">
 
 
-    <form id="register-form" action ="https://www.google.com/">
+    <form id="register-form" action ="./menuBar.html">
     <h2>Create Account</h2>
     <input-wrapper id="email" Label = "Email" type="email" error="" value="" required></input-wrapper>
     
@@ -17,7 +17,7 @@ $template.innerHTML = /*html*/
     <input-wrapper id="password" Label = "Password" type="password" error="" value="" required></input-wrapper>
     <input-wrapper id="password-confirmation" Label = "Password Confirmation" type="password" error="" value="" required></input-wrapper>
     <div id='message'></div>
-    <input type="submit" value="Sign Up" id="register-btn">
+    <input type="submit"  value="Sign Up" id="register-btn">
     <div id="to-login">
         Have you already had an account? <b> <a href = "">Login </a> </b>
      

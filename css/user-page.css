@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Langar&display=swap');
+
 *{
     padding: 0;
     margin: 0;
     text-decoration: none;
     list-style: none;
 
+}
+.logo {
+    font-family: 'Langar', cursive;
 }
 body {
     font-family: 'Times New Roman', Times, serif;
@@ -24,7 +29,7 @@ label.logo {
     padding: 0 100px;
     line-height: 80px;
 }
-div.ul {
+/* div.ul {
     
     float: right;
     margin-right: 40px;
@@ -35,7 +40,7 @@ div.li {
     margin: 0px 8px;
     line-height: 80px;
     text-align: justify;
-}
+} */
 div a {
     color : white;
     font-size: 18px;
