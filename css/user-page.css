@@ -13,7 +13,7 @@
 body {
     font-family: 'Times New Roman', Times, serif;
 }
-div {
+#navigation-bar {
     height: 125px;
     width: 100%;
     background: #34495e;
@@ -41,7 +41,7 @@ div.li {
     line-height: 80px;
     text-align: justify;
 } */
-div a {
+#navigation-bar a {
     color : white;
     font-size: 18px;
     text-transform: uppercase;
@@ -49,8 +49,25 @@ div a {
     padding: 7px 10px;
     border-radius: 3px;
 }
-a.active,a:hover{
+.logo a.active,.logo a:hover{
     border: 1px solid white;
     transition: .5s;
 }
 
+
+.container{
+    margin-left: 130px;
+    margin-top: 50px;
+}
+
+#intro1 {
+    font-size:30px;
+    font-family: 'Times New Roman', Times, serif;
+    padding-bottom: 30px;
+}
+
+#image {
+    background-color: cadetblue ;
+    width: 1180px;
+    height: 600px;
+}
