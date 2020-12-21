@@ -1,34 +1,26 @@
-let listImage = [
+let listing = [
+  
   {
-    img: "http://dummyimage.com/300x300.jpg/dddddd/000000",
+    img: "https://ccbook.vn/wordpress/wp-content/uploads/2019/04/tong-hop-kien-thuc-ngu-van-lop-9-anh-minh-hoa-1.png",
+    name:"Văn Học"
   },
   {
-    img: "http://dummyimage.com/300x300.jpg/dddddd/000000",
+    img: "https://vnwriter.net/wp-content/uploads/2018/12/sach-hay-ve-dien-anh-780x405.jpg",
+    name: "Điện Ảnh"
   },
   {
-    img: "http://dummyimage.com/300x300.jpg/cc0000/ffffff",
+    img: "https://nhiepanhvietnam.vn/Uploads/logos/14072017/News/2071416386-nhung-dieu-can-biet-trong-nhiep-anh.jpg",
+    name: "Nhiếp Ảnh"
   },
   {
-    img: "http://dummyimage.com/300x300.jpg/ff4444/ffffff",
+    img: "https://vnwriter.net/wp-content/uploads/2018/04/sach-hay-ve-am-nhac-780x405.jpg",
+    name:"Âm Nhạc"
   },
   {
-    img: "http://dummyimage.com/300x300.jpg/ff4444/ffffff",
+    img: "https://revelogue.com/wp-content/uploads/2020/11/Camille_Pissarro_-_Avenue_de_lOpera_-_Musee_des_Beaux-Arts_Reims-1024x808.jpg",
+    name: "Văn Hóa"
   },
-  {
-    img: "http://dummyimage.com/300x300.jpg/ff4444/ffffff",
-  },
-  {
-    img: "http://dummyimage.com/300x300.jpg/5fa2dd/ffffff",
-  },
-  {
-    img: "http://dummyimage.com/300x300.jpg/ff4444/ffffff",
-  },
-  {
-    img: "http://dummyimage.com/300x300.jpg/dddddd/000000",
-  },
-  {
-    img: "http://dummyimage.com/300x300.jpg/cc0000/ffffff",
-  },
+  
 ];
 
 function displayImage(){
@@ -37,20 +29,21 @@ function displayImage(){
     console.log(image);
     image.innerHTML= ""
     
-    for (let i=0 ; i< listImage.length ; i++){
-        const img = listImage[i]
-        console.log(img.img);
+    for (let i=0 ; i< listing.length ; i++){
+        const index = listing[i]
 
         let HTML = `
         <div class="column">
                 <img
                   id="img2"
                   onclick="myFunction(this)"
-                  src= ${img.img}
+                  src= ${index.img}
                   width="200px"
+                  height="130px"
                   alt=""
                 />
-                <p>Black Alistar</p>
+                <p id="name">${index.name}</p>
+               
               </div>
         
         

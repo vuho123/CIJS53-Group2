@@ -57,7 +57,7 @@ div.li {
 
 .container{
     margin-left: 130px;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 #intro1 {
@@ -71,6 +71,8 @@ div.li {
     width: 1180px;
     height: 600px;
     overflow-y: scroll;
+    background-size: cover;
+    
     }
 .column {
     position: relative;
@@ -120,4 +122,23 @@ div.li {
     bottom: 0px;
 
 }
-  
+#description {
+    display: inline;
+    color: white ;
+    position: absolute;
+    top: 300px;
+    left: 500px;
+    font-size: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+#name {
+  font-size: 25px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+#headName {
+  font-size: 25px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
