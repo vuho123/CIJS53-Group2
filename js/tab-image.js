@@ -15,8 +15,4 @@ let image1 = document.getElementById("img1")
 document.getElementById("image").style.backgroundImage = "url('"+image1.src + "')"
 
 
-
-
-
-
 // document.getElementById("description").textContent = document.getElementById("headName").textContent

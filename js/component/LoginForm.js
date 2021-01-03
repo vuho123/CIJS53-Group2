@@ -6,20 +6,18 @@ $template.innerHTML = /*html*/
 `
 
    
-<link rel="stylesheet" href="./css/register-form.css">
+<link rel="stylesheet" href="./css/login-form.css">
 
 
     <form id="register-form" action ="./menuBar.html">
-    <h2>Create Account</h2>
+    <h2>Login</h2>
     <input-wrapper id="email" Label = "Email" type="email" error="" value="" required></input-wrapper>
     
-    <input-wrapper id="name" Label = "Name" type="text" error="" value="" required></input-wrapper>
     <input-wrapper id="password" Label = "Password" type="password" error="" value="" required></input-wrapper>
-    <input-wrapper id="password-confirmation" Label = "Password Confirmation" type="password" error="" value="" required></input-wrapper>
     <div id='message'></div>
-    <input type="submit"  value="Sign Up" id="register-btn">
-    <div id="to-login">
-        Have you already had an account? <b> <a href = "">Login </a> </b>
+    <input type="submit"  value="Sign in" id="login-btn">
+    <div id="to-register">
+        You don't have an account? <b> <a href = "">Register </a> </b>
      
      </div>
 
@@ -40,17 +38,14 @@ $template.innerHTML = /*html*/
     
 
 
-export default class RegistrationForm extends HTMLElement {
+export default class LoginForm extends HTMLElement {
     constructor(){
         super();
         this.attachShadow({mode:'open'});
         this.shadowRoot.appendChild($template.content.cloneNode(true))
         this.$form = this.shadowRoot.getElementById('register-form')
         this.$email = this.shadowRoot.getElementById('email')
-        this.$name = this.shadowRoot.getElementById('name')
         this.$password = this.shadowRoot.getElementById('password')
-        this.$passwordConfirmation = this.shadowRoot.getElementById('password-confirmation')
-        this.$message = this.shadowRoot.getElementById("message")
 
 
     }
@@ -59,37 +54,30 @@ export default class RegistrationForm extends HTMLElement {
         this.$form.onsubmit = async (event) => {
             event.preventDefault();
             let email = this.$email.value();
-            let name = this.$name.value();
             let password = this.$password.value();
-            let $passwordConfirmation = this.$passwordConfirmation.value();
 
             let isPassed =
 
-           ( InputWrapper.validate(this.$email, (value) => value != '' , "Type Your Email")
-&&          InputWrapper.validate(this.$email, (value) => validateEmail(value)  , "Email is wrong") ) &&
+           ( InputWrapper.validate(this.$email, (value) => value != '' , "Type Your Email"))&
+           
 
 
 
-           ( InputWrapper.validate(this.$name, (value) => value != '' , "Type Your Name")) &&
-           ( InputWrapper.validate(this.$password, (value) => value != '' , "Type Your Password") ) &&
-           ( InputWrapper.validate(this.$passwordConfirmation, (value) => value != '' , "Type Your Password Again")
-&&           InputWrapper.validate(this.$passwordConfirmation, (value) => value == password , "Password confirmation is incorrect"))
-
+           InputWrapper.validate(this.$password, (value) => value != '' , "Type Your Password")  
+           
             
             if(isPassed){
-                let result = await firebase.firestore().collection('users').where('email', '==', email).get();
-                console.log(result);
+                let result = await firebase
+                .firestore()
+                .collection('users')
+                .where('email','==',email)
+                .where('password','==', CryptoJS.MD5(password).toString())
+                .get()
 
-                if(result.empty) {
-                    firebase.firestore().collection('users').add({
-                        name: name,
-                        email: email,
-                        password: CryptoJS.MD5(password).toString()
-
-                    });
-                }
-                else {
-                    alert("This email has been used by others")
+                if(result.empty){
+                    alert("Email or Password incorrect")
+                } else {
+                    alert("Successful!")
                 }
             }
             
@@ -133,7 +121,7 @@ export default class RegistrationForm extends HTMLElement {
     
 
 
-window.customElements.define('register-form' , RegistrationForm)
+window.customElements.define('login-form' , LoginForm)
 // console.log(localStorage.getItem("name"));
 
 
