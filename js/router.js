@@ -4,11 +4,16 @@ var hash = '#!'; // Defaults to: '#'
 var router = new Navigo(root, useHash, hash);
 
 router.on('/sign-up', function(){
-    console.log("ban dang o chuc nang dang ki");
+    document.getElementById('app').innerHTML = `<register-form></register-form>`;
 }).resolve();
 
 router.on('/sign-in', function(){
-    console.log("ban dang o chuc nang dang nhap");
+    document.getElementById('app').innerHTML = `<login-form></login-form>`;
+
 }).resolve();
+
+router.on('/chat',function(){
+    document.getElementById('app').innerHTML = '<h1>ban da vao man hinh chat</h1>'
+})
 
 window.router = router;

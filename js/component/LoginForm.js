@@ -5,11 +5,12 @@ const $template = document.createElement('template')
 $template.innerHTML = /*html*/
 `
 
-   
+<head><div id="loadOverlay" style="background-color:#333; position:absolute; top:0px; left:0px; width:100%; height:100%; z-index:2000;"></div></head>
+
 <link rel="stylesheet" href="./css/login-form.css">
 
 
-    <form id="register-form" action ="./menuBar.html">
+    <form id="register-form" action ="./menuBar.html" >
     <h2>Login</h2>
     <input-wrapper id="email" Label = "Email" type="email" error="" value="" required></input-wrapper>
     
@@ -17,7 +18,7 @@ $template.innerHTML = /*html*/
     <div id='message'></div>
     <input type="submit"  value="Sign in" id="login-btn">
     <div id="to-register">
-        You don't have an account? <b> <a href = "">Register </a> </b>
+        You don't have an account? <b> <a href = "#!/sign-up">Register </a> </b>
      
      </div>
 
@@ -77,7 +78,7 @@ export default class LoginForm extends HTMLElement {
                 if(result.empty){
                     alert("Email or Password incorrect")
                 } else {
-                    alert("Successful!")
+                    router.navigate('/chat');
                 }
             }
             

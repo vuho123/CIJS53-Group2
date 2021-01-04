@@ -9,6 +9,7 @@
 <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-firestore.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js" integrity="sha512-nOQuvD9nKirvxDdvQ9OMqe2dgapbPB7vYAMrzJihw5m+aNcf0dX53m6YxM4LgA9u8e9eg9QX+/+mPu8kCNpV2A==" crossorigin="anonymous"></script>
+<script src="//unpkg.com/navigo@6"></script>
 
 
 
@@ -33,14 +34,21 @@
 
 </head>
 <body style="background-color: rgb(128, 0, 255);">
-    <!-- <form id="register-form">
-    <input-wrapper Label = "Email" type="email" error="" value=""></input-wrapper>
-    <input-wrapper Label = "Name" type="text" error="" value=""></input-wrapper>
-    <input-wrapper Label = "Password" type="password" error="" value=""></input-wrapper>
-    <input-wrapper Label = "Password Confirmation" type="password" error="" value=""></input-wrapper>
-    <button>Register</button>
-    </form> -->
-    <login-form></login-form>
+    
+    <!-- <login-form></login-form> -->
+    <div id="app">
+
+      <friend-list data= '[
+        {"name": "Vu" , "email": "vu@gmail.com", "isFriend" : false},
+        {"name":"Minh", "email": "minh@gmail.com", "isFriend" : true},
+        {"name": "Quoc", "email": "quoc@gmail.com", "isFriend" : false}
+      
+      ]'></friend-list>
+
+    </div>
+    
+    
 
 
     <script src="./js/app.js" type="module"></script>
+  </body>

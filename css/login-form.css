@@ -8,6 +8,8 @@
     background-color: #ffffff;
     border-radius: 10px;
     margin: auto;
+    /* transition-duration: 5s; */
+    /* transition-delay: 0.2s; */
 }
 #register-form > h2 {
     text-align: center;
@@ -33,3 +35,4 @@
     font-size: 15px;
     margin-bottom: 30px;
 }
+#loadOverlay{display: none;}

@@ -5,10 +5,11 @@ const $template = document.createElement('template')
 $template.innerHTML = /*html*/
 `
 
-   
+<head><div id="loadOverlay" style="background-color:#333; position:absolute; top:0px; left:0px; width:100%; height:100%; z-index:2000;"></div></head>
+
 <link rel="stylesheet" href="./css/register-form.css">
 
-
+ 
     <form id="register-form" action ="./menuBar.html">
     <h2>Create Account</h2>
     <input-wrapper id="email" Label = "Email" type="email" error="" value="" required></input-wrapper>
@@ -19,7 +20,7 @@ $template.innerHTML = /*html*/
     <div id='message'></div>
     <input type="submit"  value="Sign Up" id="register-btn">
     <div id="to-login">
-        Have you already had an account? <b> <a href = "">Login </a> </b>
+        Have you already had an account? <b> <a href = "#!/sign-in">Login </a> </b>
      
      </div>
 
