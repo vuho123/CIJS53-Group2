@@ -58,12 +58,13 @@ background-color:black;
     height: 715px;
     display:block;
     overflow:scroll;
-    
+
 
 
     
 }
 #friend-list{
+    height:max-content;
 }
 
 </style>

@@ -12,7 +12,7 @@ $template.innerHTML = /*html*/ `
         #chat-screen{
             display:flex;
             justify-content: space-between;
-            height: 100%;
+            height: 100vh;
             
             
 
@@ -22,7 +22,7 @@ $template.innerHTML = /*html*/ `
         }
         friend-list{
             width:30%;
-            height:100vh;
+            height:100%;
             
         }
         chat-container{

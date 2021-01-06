@@ -18,7 +18,7 @@ $template.innerHTML = /*html*/
     }
     #chat-container{
         background-color: #f1f1f2;
-        height:100%;
+        height:100vh;
         display:flex;
         flex-direction: column;
         justify-content:space-between;
