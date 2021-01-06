@@ -55,7 +55,7 @@ background-color:black;
 }
 #wrapper {
     background-color:black;
-    height: 715px;
+    height: 100vh;
     display:block;
     overflow:scroll;
 
