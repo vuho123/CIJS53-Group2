@@ -44,10 +44,7 @@ $template.innerHTML = /*html*/`
         #make-friend-btn {
             cursor:pointer;
         }
-        #friend-info{
-            overflow:scroll;
-
-        }
+        
     </style>
 
     <div id="friend-container">

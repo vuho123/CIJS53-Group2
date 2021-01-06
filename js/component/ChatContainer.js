@@ -13,7 +13,7 @@ $template.innerHTML = /*html*/
         padding: 15px ;
         border-bottom: 1px solid #cccccc;
         color:white;
-        
+
         
     }
     #chat-container{
@@ -33,7 +33,7 @@ $template.innerHTML = /*html*/
         justify-content: space-between;
         align-items: center;
         height:10px;
-        <!-- background-color:black; -->
+        background-color:black; 
 
 
         

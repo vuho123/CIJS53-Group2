@@ -12,7 +12,7 @@ $template.innerHTML = /*html*/ `
         #chat-screen{
             display:flex;
             justify-content: space-between;
-            height: max-content;
+            height: 100%;
             
             
 
