@@ -60,7 +60,7 @@ $template.innerHTML = /*html*/ `
     </div>
     <form id="search-friend-form">
         <input-wrapper id="search-friend-keyword" label ="" type="text" error = ""> </input-wrapper>
-        <button id="search-friend-btn"> Search </button>
+        <button id="search-friend-btn"  > Search </button>
     </form>
 
 
@@ -82,12 +82,20 @@ export default class FriendList extends HTMLElement {
         this.$searchFriendForm = this.shadowRoot.getElementById('search-friend-form')
         this.setAttribute('data',JSON.stringify(data));
         this.$searchFriendKeyword = this.shadowRoot.getElementById("search-friend-keyword")
+        this.$searchFriendButton = this.shadowRoot.getElementById("search-friend-btn")
     }
 
     connectedCallback(){
-        this.$searchFriendForm.onsubmit = async (event) => {
+        this.$searchFriendKeyword.onkeyup = (event) => {
             event.preventDefault();
+            if(event.code === 'Enter'){
+                this.$searchFriendButton.click()
+            }
+        }
 
+        
+        this.$searchFriendButton.onclick = async (event) => {
+            event.preventDefault();
             let keyword = this.$searchFriendKeyword.value();
 
             let isPassed = InputWrapper.validate(this.$searchFriendKeyword,    (value) => value != '' , "Type Friend Name")
@@ -96,9 +104,10 @@ export default class FriendList extends HTMLElement {
                 let data = await this.searchFriendByName(keyword);
                 this.setAttribute('data', JSON.stringify(data));
 
-
             }
+
         }
+
     }
     
     static get observedAttributes(){
@@ -152,3 +161,5 @@ export default class FriendList extends HTMLElement {
 
 
 window.customElements.define('friend-list', FriendList);
+
+

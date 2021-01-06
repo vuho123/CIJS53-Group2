@@ -47,12 +47,19 @@ export default class LoginForm extends HTMLElement {
         this.$form = this.shadowRoot.getElementById('register-form')
         this.$email = this.shadowRoot.getElementById('email')
         this.$password = this.shadowRoot.getElementById('password')
+        this.$loginBtn = this.shadowRoot.getElementById('login-btn')
 
 
     }
 
     connectedCallback(){
-        this.$form.onsubmit = async (event) => {
+        this.$password.onkeyup = (e) => {
+            if(e.code === 'Enter'){
+                this.$loginBtn.click();
+            }
+        }
+
+        this.$loginBtn.onclick = async (event) => {
             event.preventDefault();
             let email = this.$email.value();
             let password = this.$password.value();

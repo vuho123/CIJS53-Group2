@@ -75,8 +75,9 @@ export default class ChatContainer extends HTMLElement {
         this.$chatInfo = this.shadowRoot.getElementById('chat-info');
         this.$messageList = this.shadowRoot.querySelector('message-list');
         this.$sendMessageForm = this.shadowRoot.getElementById('send-message-form');
-        this.$messageContent = this.shadowRoot.getElementById('message-content')
-        
+        this.$messageContent = this.shadowRoot.getElementById('message-content');
+        this.$sendMessageBtn = this.shadowRoot.getElementById('send-message-btn');
+
     }
 
     static get observedAttributes(){
@@ -84,8 +85,15 @@ export default class ChatContainer extends HTMLElement {
     }
 
     connectedCallback(){
-        this.$sendMessageForm.onsubmit = (event) => {
+        this.$messageContent.onkeyup = (e) => {
+            // e.preventDefault();
+            if(e.code === 'Enter'){
+                this.$sendMessageBtn.click();
+            }
+        }
+        this.$sendMessageBtn.onclick = (event) => {
             event.preventDefault();
+            
             let content = this.$messageContent.value();
             if(content != ''){
                 this.sendMessages(content);
@@ -96,7 +104,7 @@ export default class ChatContainer extends HTMLElement {
                 alert("Type Your Text");
             }
         }
-        // this.$messageList.setAttribute('data', JSON.stringify(fakeMessageList))
+    
     }
 
    async attributeChangedCallback(attrName, oldValue, newValue){

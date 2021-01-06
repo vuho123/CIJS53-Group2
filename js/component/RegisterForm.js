@@ -52,12 +52,18 @@ export default class RegistrationForm extends HTMLElement {
         this.$password = this.shadowRoot.getElementById('password')
         this.$passwordConfirmation = this.shadowRoot.getElementById('password-confirmation')
         this.$message = this.shadowRoot.getElementById("message")
-
+        this.$registerBtn = this.shadowRoot.getElementById("register-btn")
 
     }
 
     connectedCallback(){
-        this.$form.onsubmit = async (event) => {
+        this.$email.onkeyup = (e) => {
+            if(e.code === "Enter"){
+                this.$registerBtn.click()
+            }
+        }
+
+        this.$registerBtn.onclick = async (event) => {
             event.preventDefault();
             let email = this.$email.value();
             let name = this.$name.value();
