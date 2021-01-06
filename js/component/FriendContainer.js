@@ -1,4 +1,7 @@
+import {getCurrentUser} from "../utils.js"
+import ChatScreen from "../screens/ChatScreen.js"
 const $template = document.createElement("template");
+
 
 $template.innerHTML = /*html*/`
     <style>
@@ -11,6 +14,8 @@ $template.innerHTML = /*html*/`
             display:flex;
             justify-content: space-between;
             align-items: center;
+            cursor:pointer;
+
 
 
         }
@@ -34,14 +39,16 @@ $template.innerHTML = /*html*/`
 `;
 
 export default class FriendContainer extends HTMLElement {
-    constructor(name,email, isFriend){
+    constructor(id,name,email, isFriend){
         super();
         this.attachShadow({mode:'open'});
 
         this.shadowRoot.appendChild($template.content.cloneNode(true));
         this.$friendName = this.shadowRoot.getElementById('friend-name');
         this.$friendEmail = this.shadowRoot.getElementById("friend-email");
-        this.$makeFriend = this.shadowRoot.getElementById("make-friend-btn")
+        this.$makeFriend = this.shadowRoot.getElementById("make-friend-btn");
+        this.id= id;
+
         this.setAttribute('name',name);
         this.setAttribute('email', email);
         this.setAttribute('is-friend', isFriend)
@@ -49,6 +56,20 @@ export default class FriendContainer extends HTMLElement {
     }
     static get observedAttributes(){
         return ['name', 'email', 'is-friend'];
+    }
+
+    connectedCallback(){
+        
+        this.onclick = () => {
+            console.log("Chuyen Sang Chat Voi " + this.getAttribute('name'));
+            router.navigate('/chat/' + this.id)
+        }
+        this.$makeFriend.onclick = async () => {
+            this.$makeFriend.disabled = true;
+            await this.makeFriends(this.id);
+            this.$makeFriend.style.display = "none";
+            
+        }
     }
 
     attributeChangedCallback(attrName, oldValue, newValue){
@@ -68,6 +89,19 @@ export default class FriendContainer extends HTMLElement {
             }
         };
     
+    }
+    // async loadUsers(){
+    //     let currentUser = getCurrentUser();
+    //     let users = await firebase.firestore().collection('users').get();
+    //     let existUsers = getDataFromDocs(users.docs);
+        
+    //     console.log(existUsers);
+    
+    // }
+
+    async makeFriends(userId){
+        let currentUser = getCurrentUser()
+        await firebase.firestore().collection("collection friend").add({relation: [currentUser.id,userId]});
     }
 }
 

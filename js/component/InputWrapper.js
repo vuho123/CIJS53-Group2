@@ -6,6 +6,7 @@ $template.innerHTML = /*html*/ `
      
     <label  id="input-label" for="#input-main" >Name:</label>
     <input id="input-main" type="password">
+    
     <div id="input-error">Type Your Name</div>
     
 </div>  
@@ -60,7 +61,11 @@ export default class InputWrapper extends HTMLElement {
 
         }
     }
-    value(){
+    value(newValue){
+        if(newValue != undefined){
+            this.$main.value = newValue;
+            return newValue;
+        }
         return this.$main.value;
     }
 

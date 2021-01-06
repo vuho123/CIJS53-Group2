@@ -1,5 +1,5 @@
 import InputWrapper from "./InputWrapper.js";
-import {validateEmail} from "../utils.js"
+import {getDataFromDoc, saveCurrentUser, validateEmail} from "../utils.js"
 
 const $template = document.createElement('template')
 $template.innerHTML = /*html*/
@@ -10,7 +10,7 @@ $template.innerHTML = /*html*/
 <link rel="stylesheet" href="./css/login-form.css">
 
 
-    <form id="register-form" action ="./menuBar.html" >
+    <form id="register-form" action ="" >
     <h2>Login</h2>
     <input-wrapper id="email" Label = "Email" type="email" error="" value="" required></input-wrapper>
     
@@ -78,7 +78,9 @@ export default class LoginForm extends HTMLElement {
                 if(result.empty){
                     alert("Email or Password incorrect")
                 } else {
-                    router.navigate('/chat');
+                    console.log(result);
+                    saveCurrentUser(getDataFromDoc(result.docs[0]));
+                    router.navigate('/chat/0');
                 }
             }
             

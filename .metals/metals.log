@@ -2,3 +2,4 @@
 2021.01.04 14:29:51 INFO  time: initialize in 1.63s
 2021.01.04 14:29:51 WARN  Build server is not auto-connectable.
 2021.01.04 14:29:51 WARN  no build tool detected in workspace '/Users/admin/Documents/GitHub/CIJS53-Group2'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2021.01.04 23:33:34 INFO  shutting down Metals

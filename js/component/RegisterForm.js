@@ -1,5 +1,5 @@
 import InputWrapper from "./InputWrapper.js";
-import {validateEmail} from "../utils.js"
+import {getCurrentUser, validateEmail} from "../utils.js"
 
 const $template = document.createElement('template')
 $template.innerHTML = /*html*/
@@ -86,8 +86,9 @@ export default class RegistrationForm extends HTMLElement {
                         name: name,
                         email: email,
                         password: CryptoJS.MD5(password).toString()
-
                     });
+                    let currentUser= getCurrentUser();
+                    router.navigate('/sign-in');
                 }
                 else {
                     alert("This email has been used by others")
