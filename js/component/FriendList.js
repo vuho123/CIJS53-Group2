@@ -17,6 +17,10 @@ $template.innerHTML = /*html*/ `
     font-weight: bold;
     text-align:center;
     border-bottom: 1px solid #cccccc;
+    color:white;
+    background-color:black;
+
+
 
 
 
@@ -27,6 +31,7 @@ $template.innerHTML = /*html*/ `
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #cccccc;
+background-color:black;
 
 
 }
@@ -36,7 +41,7 @@ $template.innerHTML = /*html*/ `
     background-color: blueviolet;
     padding: 5px 15px;
     color: #fff;
-    border-radius: 5px; 
+    border-radius: 10px; 
     height: 40px;
     width:100px;
     cursor:pointer;
@@ -45,9 +50,11 @@ $template.innerHTML = /*html*/ `
 }
 #search-friend-keyword{
     width: calc(100% - 100px - 20px);
+    background-color:black;
+
 }
 #wrapper {
-    background-color:#f1f1f2;
+    background-color:black;
     height:100%;
     
 }

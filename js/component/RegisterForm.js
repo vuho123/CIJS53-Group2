@@ -57,7 +57,7 @@ export default class RegistrationForm extends HTMLElement {
     }
 
     connectedCallback(){
-        this.$email.onkeyup = (e) => {
+        this.$passwordConfirmation.onkeyup = (e) => {
             if(e.code === "Enter"){
                 this.$registerBtn.click()
             }
@@ -93,7 +93,7 @@ export default class RegistrationForm extends HTMLElement {
                         email: email,
                         password: CryptoJS.MD5(password).toString()
                     });
-                    let currentUser= getCurrentUser();
+                    alert("Please sign in with your registered account")
                     router.navigate('/sign-in');
                 }
                 else {

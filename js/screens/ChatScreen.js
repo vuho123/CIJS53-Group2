@@ -5,9 +5,18 @@ const $template = document.createElement("template");
 $template.innerHTML = /*html*/ `
 
     <style>
+        *{
+            background-color:white;
+
+        }
         #chat-screen{
             display:flex;
             justify-content: space-between;
+            height: max-content;
+            
+
+            
+            
 
         }
         friend-list{

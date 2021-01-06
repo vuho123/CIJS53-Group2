@@ -18,8 +18,8 @@
     height: 40px;
     box-sizing: border-box;
     padding: 0px 10px;
-    border:1px solid #bcbabe;
-    border-radius: 5px;
+    border:2px solid #bcbabe;
+    border-radius: 30px;
     outline: none;
 }
 #input-error {

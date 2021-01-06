@@ -12,6 +12,8 @@ $template.innerHTML = /*html*/
         font-size:20px;
         padding: 15px ;
         border-bottom: 1px solid #cccccc;
+        color:white;
+        
         
     }
     #chat-container{
@@ -20,6 +22,8 @@ $template.innerHTML = /*html*/
         display:flex;
         flex-direction: column;
         justify-content:space-between;
+        background-color:black;
+
         
 
     }
@@ -29,6 +33,8 @@ $template.innerHTML = /*html*/
         justify-content: space-between;
         align-items: center;
         height:10px;
+        <!-- background-color:black; -->
+
 
         
 

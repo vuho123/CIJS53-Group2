@@ -15,16 +15,33 @@ $template.innerHTML = /*html*/`
             justify-content: space-between;
             align-items: center;
             cursor:pointer;
+            background-color:black;
+            opacity:0.4;
+            
+
+
+
 
 
 
         }
+        #friend-container:hover  {
+            opacity:1;
+    
+        }
+        
+        
         #friend-email{
             font-size: 13px;
+            color:white;
+
 
         }
+        #friend-name {
+            color:white;
+        }
         #make-friend-btn {
-
+            cursor:pointer;
         }
     </style>
 
@@ -44,6 +61,7 @@ export default class FriendContainer extends HTMLElement {
         this.attachShadow({mode:'open'});
 
         this.shadowRoot.appendChild($template.content.cloneNode(true));
+        this.$friendContainer = this.shadowRoot.getElementById("friend-container")
         this.$friendName = this.shadowRoot.getElementById('friend-name');
         this.$friendEmail = this.shadowRoot.getElementById("friend-email");
         this.$makeFriend = this.shadowRoot.getElementById("make-friend-btn");
@@ -59,8 +77,10 @@ export default class FriendContainer extends HTMLElement {
     }
 
     connectedCallback(){
-        
+            
         this.onclick = () => {
+            
+            
             console.log("Chuyen Sang Chat Voi " + this.getAttribute('name'));
             router.navigate('/chat/' + this.id)
         }
