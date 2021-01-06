@@ -55,8 +55,15 @@ background-color:black;
 }
 #wrapper {
     background-color:black;
-    height:100%;
+    height: 715px;
+    display:block;
+    overflow:scroll;
     
+
+
+    
+}
+#friend-list{
 }
 
 </style>

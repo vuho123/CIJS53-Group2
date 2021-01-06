@@ -18,6 +18,7 @@ $template.innerHTML = /*html*/`
             background-color:black;
             opacity:0.4;
             
+            
 
 
 
@@ -42,6 +43,10 @@ $template.innerHTML = /*html*/`
         }
         #make-friend-btn {
             cursor:pointer;
+        }
+        #friend-info{
+            overflow:scroll;
+
         }
     </style>
 

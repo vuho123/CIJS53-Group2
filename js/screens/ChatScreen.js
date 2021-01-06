@@ -14,6 +14,7 @@ $template.innerHTML = /*html*/ `
             justify-content: space-between;
             height: max-content;
             
+            
 
             
             
@@ -27,6 +28,8 @@ $template.innerHTML = /*html*/ `
         chat-container{
             width:69%;
             height: 100vh;
+            overflow-y:scroll;
+
 
         }
 

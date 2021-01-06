@@ -9,7 +9,6 @@ $template.innerHTML = /*html*/
         padding: 0px 15px;
         height:100%;
         overflow-y: scroll;
-        overflow-x: scroll;
 
         
 
@@ -36,6 +35,8 @@ export default class MessageList extends HTMLElement {
         return ['data'];
     }
     attributeChangedCallback(attrName,oldValue,newValue){
+        let currentUser = getCurrentUser()
+
         if(attrName =='data'){
             let data = JSON.parse(newValue);
             data.sort(function(message_1, message_2){
@@ -47,7 +48,6 @@ export default class MessageList extends HTMLElement {
 
             this.$messageList.innerHTML = '';
             for(let messageData of data){
-                let currentUser = getCurrentUser()
                 messageData.owned = currentUser.id == messageData.owner;
 
 
