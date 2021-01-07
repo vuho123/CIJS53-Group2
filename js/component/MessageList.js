@@ -48,7 +48,7 @@ export default class MessageList extends HTMLElement {
                 return a-b;
             })
             let shouldScroll = this.$messageList.scrollTop + this.$messageList.clientHeight === this.$messageList.scrollHeight;
-
+            
             this.$messageList.innerHTML = '';
             
             for(let messageData of data){
