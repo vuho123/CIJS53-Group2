@@ -132,12 +132,12 @@ export default class ChatContainer extends HTMLElement {
             if(content != ''){
                 this.sendMessages(content);
                 this.$messageContent.value('')   
-                this.$messageContent.scrollTop = this.$messageContent.scrollHeight;                 
+                // this.$messageContent.scrollTop = this.$messageContent.scrollHeight;                 
 
 
                 
             }else {
-                alert("Type Your Text");
+                return;
             }
         }
     

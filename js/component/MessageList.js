@@ -37,6 +37,7 @@ export default class MessageList extends HTMLElement {
     }
     attributeChangedCallback(attrName,oldValue,newValue){
         let currentUser = getCurrentUser()
+        let shouldScroll = this.$messageList.scrollTop + this.$messageList.clientHeight === this.$messageList.scrollHeight;
 
         if(attrName =='data'){
             
@@ -47,7 +48,6 @@ export default class MessageList extends HTMLElement {
 
                 return a-b;
             })
-            let shouldScroll = this.$messageList.scrollTop + this.$messageList.clientHeight === this.$messageList.scrollHeight;
             
             this.$messageList.innerHTML = '';
             
