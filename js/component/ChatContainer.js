@@ -17,12 +17,26 @@ $template.innerHTML = /*html*/
         
     }
     #chat-container{
-        background-color: #f1f1f2;
-        height:100vh;
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height:100vh;
         display:flex;
         flex-direction: column;
         justify-content:space-between;
         background-color:black;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }        
 
         
 
@@ -33,7 +47,21 @@ $template.innerHTML = /*html*/
         justify-content: space-between;
         align-items: center;
         height:10px;
-        background-color:black; 
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 
 
         
@@ -103,7 +131,9 @@ export default class ChatContainer extends HTMLElement {
             let content = this.$messageContent.value();
             if(content != ''){
                 this.sendMessages(content);
-                this.$messageContent.value('')                    
+                this.$messageContent.value('')   
+                this.$messageContent.scrollTop = this.$messageContent.scrollHeight;                 
+
 
                 
             }else {
@@ -118,8 +148,9 @@ export default class ChatContainer extends HTMLElement {
             // console.log("BAN DANG CHAT VOI " + newValue);
            let friendInfo= await this.loadFriendInfo();
            this.$chatInfo.innerHTML = friendInfo.name; 
-           this.loadMessages();
 
+           this.loadMessages();
+           
 
         }
     }
@@ -132,6 +163,8 @@ export default class ChatContainer extends HTMLElement {
     }
 
     loadMessages(){
+        // let shouldScroll = this.$messageContent.scrollTop + this.$messageContent.clientHeight === this.$messageContent.scrollHeight;
+
         let currentUser = getCurrentUser()
         let friendId = this.getAttribute('current-chat'); //Lấy id của bạn
         firebase.firestore().collection('messages').where('owner' , 'in', [currentUser.id, friendId ]).onSnapshot((result) => {
@@ -142,6 +175,9 @@ export default class ChatContainer extends HTMLElement {
             // console.log(messagesData);
 
             this.$messageList.setAttribute('data', JSON.stringify(messagesData))
+
+// this.$messageList.scrollTop;
+            
         });
         
     }
@@ -149,6 +185,8 @@ export default class ChatContainer extends HTMLElement {
         
         let currentUser = getCurrentUser();
         await firebase.firestore().collection('messages').add({content:content,dateModified: new Date().toISOString(), owner: currentUser.id, receiver: this.getAttribute('current-chat') })
+        // this.$messageContent.scrollTop = this.$messageContent.scrollHeight;                 
+
     }
 }
 window.customElements.define('chat-container', ChatContainer)

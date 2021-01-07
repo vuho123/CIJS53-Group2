@@ -45,6 +45,10 @@ export default class  MessageContainer extends HTMLElement {
         this.setAttribute('date-modified',dateModified)
 
     }
+    // connectedCallback(){
+    //     this.$messageContent.scrollTop = this.$messageContent.scrollHeight;
+
+    // }
     static get observedAttributes(){
         return ['content', 'owned', 'date-modified'];
     }

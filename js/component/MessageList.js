@@ -8,7 +8,8 @@ $template.innerHTML = /*html*/
     #message-list {
         padding: 0px 15px;
         height:100%;
-        overflow-y: scroll;
+        overflow-y: auto;
+        
 
         
 
@@ -38,6 +39,7 @@ export default class MessageList extends HTMLElement {
         let currentUser = getCurrentUser()
 
         if(attrName =='data'){
+            
             let data = JSON.parse(newValue);
             data.sort(function(message_1, message_2){
                 let a = new Date(message_1.dateModified);
@@ -45,15 +47,20 @@ export default class MessageList extends HTMLElement {
 
                 return a-b;
             })
+            let shouldScroll = this.$messageList.scrollTop + this.$messageList.clientHeight === this.$messageList.scrollHeight;
 
             this.$messageList.innerHTML = '';
+            
             for(let messageData of data){
                 messageData.owned = currentUser.id == messageData.owner;
 
 
                 let $message = new MessageContainer(messageData.content, messageData.owned, messageData.dateModified);
                 this.$messageList.appendChild($message);
-
+                
+            }
+            if (!shouldScroll) {
+                this.$messageList.scrollTop = this.$messageList.scrollHeight;
             }
         }
     }
